@@ -1,0 +1,8 @@
+[MASTER]
+ignore=tests
+
+[MESSAGES CONTROL]
+disable=W1203,R0201,missing-module-docstring
+
+[FORMAT]
+good-names=fk,pk

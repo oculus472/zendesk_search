@@ -1,0 +1,38 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "==21.5b1"
+isort = "==5.8.0"
+pytest = "==6.2.4"
+pylint = "==2.8.2"
+mypy = "*"
+commitizen = "*"
+coveralls = "==2.1.0"
+pytest-cov = "==2.12.0"
+pexpect = "*"
+pytest-mock = "*"
+pre-commit = "==2.13.0"
+
+[requires]
+python_version = "3.10"
+
+[pipenv]
+allow_prereleases = true
+
+[packages]
+click = "==8.0.1"
+prompt-toolkit = "==3.0.18"
+pyinquirer = {git = "https://github.com/CITGuru/PyInquirer"}
+pyfiglet = "==0.8.post1"
+tabulate = "==0.8.9"
+
+[scripts]
+# Ensure gh action uses the right python installation
+app = "python -m zendesk_search"
+lint = "make lint"
+fmt = "make fmt"
+typecheck = "make typecheck"
+test-cov = "make test-cov"
