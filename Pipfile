@@ -27,10 +27,10 @@ click = "==8.0.1"
 prompt-toolkit = "==3.0.18"
 pyinquirer = {git = "https://github.com/CITGuru/PyInquirer"}
 pyfiglet = "==0.8.post1"
-# Ensure gh action uses the right python installation
 tabulate = "==0.8.9"
 
 [scripts]
+# Ensure gh action uses the right python installation
 lint = "make lint"
 fmt = "make fmt"
 typecheck = "make typecheck"

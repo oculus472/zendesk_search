@@ -1,5 +1,7 @@
 from typing import Mapping, Type
 
+from tabulate import tabulate
+
 from .data import Backend, get_backend
 from .models import Organization, Ticket, User, ZendeskModel
 
@@ -11,7 +13,7 @@ _resource_to_model_map: Mapping[str, Type[ZendeskModel]] = {
 all_resources = tuple(_resource_to_model_map)
 
 
-def get_field_choices_for_resource(resource: str) -> list[str]:
+def get_field_choices_for_resource(resource: str, sort=True) -> list[str]:
     """Get searchable fields for the supplied resource.
 
     Args:
@@ -20,16 +22,16 @@ def get_field_choices_for_resource(resource: str) -> list[str]:
     Returns:
         list[str]: List of searchable fields.
     """
-    return _resource_to_model_map[resource].get_searchable_fields()
+    return _resource_to_model_map[resource].get_searchable_fields(sort)
 
 
 def list_search_fields() -> None:
     """Print searchable fields to the console for all Zendesk models."""
-    # TODO: https://pypi.org/project/tabulate/
-    for _, model in _resource_to_model_map.items():
-        print(f"Search {model.__name__}s with")
-        print(*model.get_searchable_fields(), sep="\n")
-        print("-" * 15)
+    table = {
+        model.__name__: model.get_searchable_fields()
+        for _, model in _resource_to_model_map.items()
+    }
+    print(tabulate(table, headers="keys", tablefmt="psql"))
 
 
 def search_zendesk(backend: Backend = None):

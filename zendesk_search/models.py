@@ -12,8 +12,11 @@ class ZendeskModel:
     tags: list[str]
 
     @classmethod
-    def get_searchable_fields(cls):
-        return list(cls.__dataclass_fields__.keys())
+    def get_searchable_fields(cls, sort=True):
+        fields = list(cls.__dataclass_fields__.keys())
+        if sort:
+            fields.sort()
+        return fields
 
 
 @dataclass(frozen=True)
