@@ -29,6 +29,7 @@ pyinquirer = {git = "https://github.com/CITGuru/PyInquirer"}
 pyfiglet = "==0.8.post1"
 
 
+# Ensure gh action uses the right python installation
 [scripts]
 lint = "make lint"
 fmt = "make fmt"

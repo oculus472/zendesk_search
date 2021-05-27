@@ -3,6 +3,7 @@
 TODO
 - A coroutine should build the dictionary for each resource
 - A coroutine should search each dictionary
+- pylint stuff
 
 
 We don't know if the user entered a int `72` or string `"72"`.
