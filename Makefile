@@ -31,11 +31,11 @@ fmt:
 	$(RUN) black $(SRC_DIRS)
 
 lint:
-	$(RUN) $(PYTHON) isort $(SRC_DIRS)
-	$(RUN) $(PYTHON) pylint $(SRC_DIRS)
+	$(RUN) $(PYTHON) isort --profile black .
+	$(RUN) $(PYTHON) pylint $(SRC_DIRS) || true
 
 typecheck:
-	$(RUN) $(PYTHON) mypy $(SRC_DIRS)
+	$(RUN) $(PYTHON) mypy --ignore-missing-imports zendesk_search
 
 test: test-unit
 

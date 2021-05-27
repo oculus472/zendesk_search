@@ -7,15 +7,31 @@ verify_ssl = true
 black = "==21.5b1"
 isort = "==5.8.0"
 pytest = "==6.2.4"
-pre-commit = "==2.13.0"
 pylint = "==2.8.2"
 mypy = "*"
 commitizen = "*"
-pytest-cov = "==1.12.0"
 coveralls = "==2.1.0"
+pytest-cov = "==2.12.0"
+pexpect = "*"
+pytest-mock = "*"
+pre-commit = "==2.13.0"
 
 [requires]
-python_version = "3.1"
+python_version = "3.10"
 
 [pipenv]
 allow_prereleases = true
+
+[packages]
+click = "==8.0.1"
+prompt-toolkit = "==3.0.18"
+pyinquirer = {git = "https://github.com/CITGuru/PyInquirer"}
+pyfiglet = "==0.8.post1"
+
+
+# Ensure gh action uses the right python installation
+[scripts]
+lint = "make lint"
+fmt = "make fmt"
+typecheck = "make typecheck"
+test-cov = "make test-cov"
