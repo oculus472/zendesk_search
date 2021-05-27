@@ -7,7 +7,6 @@ verify_ssl = true
 black = "==21.5b1"
 isort = "==5.8.0"
 pytest = "==6.2.4"
-pre-commit = "==2.13.0"
 pylint = "==2.8.2"
 mypy = "*"
 commitizen = "*"
@@ -15,9 +14,10 @@ coveralls = "==2.1.0"
 pytest-cov = "==2.12.0"
 pexpect = "*"
 pytest-mock = "*"
+pre-commit = "==2.13.0"
 
 [requires]
-python_version = "3.1"
+python_version = "3.10"
 
 [pipenv]
 allow_prereleases = true

@@ -21,4 +21,4 @@ TRADEOFFS
 New things learnt
 - searching
 - How to go about end to end testing for python cli apps
--
+- cache python packages
