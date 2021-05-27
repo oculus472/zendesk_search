@@ -22,48 +22,26 @@ def test_list_search_fields_command(cli_app, keys):
     cli_app.expect(
         textwrap.dedent(
             """\
-        ? What do you want to do?  List search fields
-        Search Users with
-        _id
-        url
-        external_id
-        created_at
-        tags
-        name
-        alias
-        active
-        verified
-        shared
-        locale
-        ---------------
-        Search Tickets with
-        _id
-        url
-        external_id
-        created_at
-        tags
-        type
-        subject
-        description
-        priority
-        status
-        submitter_id
-        organization_id
-        has_incidents
-        due_at
-        via
-        ---------------
-        Search Organizations with
-        _id
-        url
-        external_id
-        created_at
-        tags
-        name
-        domain_names
-        details
-        shared_tickets
-        ---------------
+            ? What do you want to do?  List search fields
+            +-------------+-----------------+----------------+
+            | User        | Ticket          | Organization   |
+            |-------------+-----------------+----------------|
+            | _id         | _id             | _id            |
+            | active      | created_at      | created_at     |
+            | alias       | description     | details        |
+            | created_at  | due_at          | domain_names   |
+            | external_id | external_id     | external_id    |
+            | locale      | has_incidents   | name           |
+            | name        | organization_id | shared_tickets |
+            | shared      | priority        | tags           |
+            | tags        | status          | url            |
+            | url         | subject         |                |
+            | verified    | submitter_id    |                |
+            |             | tags            |                |
+            |             | type            |                |
+            |             | url             |                |
+            |             | via             |                |
+            +-------------+-----------------+----------------+
         """
         )
     )

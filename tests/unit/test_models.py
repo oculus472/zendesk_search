@@ -10,9 +10,9 @@ def test_zendesk_model_get_searchable_fields_returns_model_fields():
 
     assert TestModel.get_searchable_fields() == [
         "_id",
-        "url",
-        "external_id",
         "created_at",
-        "tags",
+        "external_id",
         "subclass_field",
+        "tags",
+        "url",
     ]
