@@ -27,3 +27,10 @@ click = "==8.0.1"
 prompt-toolkit = "==3.0.18"
 pyinquirer = {git = "https://github.com/CITGuru/PyInquirer"}
 pyfiglet = "==0.8.post1"
+
+
+[scripts]
+lint = "make lint"
+fmt = "make fmt"
+typecheck = "make typecheck"
+test-cov = "make test-cov"

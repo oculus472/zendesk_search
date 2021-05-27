@@ -27,15 +27,15 @@ jobs:
           pipenv install --deploy --dev
       - name: Lint
         run: |
-          make lint
+          pipenv run lint
       - name: Format
         run: |
-          make fmt
+          pipenv run fmt
       - name: Type check
         run: |
-          make typecheck
+          pipenv run typecheck
       - name: Test
         run: |
-          make test-cov
+          pipenv run test-cov
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
