@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "631fabc54804723c0d059e6115b709b2fb5eaa7655f9b13835af9635866ccbd3"
+            "sha256": "5c586a7f07b6ec31b5391a85d7a95372f63471828080d1f63878ed59dfc39ba0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -51,6 +51,14 @@
         "pyinquirer": {
             "git": "https://github.com/CITGuru/PyInquirer",
             "ref": "7637373429bec66788650cda8091b7a6f12929ee"
+        },
+        "tabulate": {
+            "hashes": [
+                "sha256:d7c013fe7abbc5e491394e10fa845f8f32fe54f8dc60c6622c6cf482d25d47e4",
+                "sha256:eb1d13f25760052e8931f2ef80aaf6045a6cceb47514db8beab24cded16f13a7"
+            ],
+            "index": "pypi",
+            "version": "==0.8.9"
         },
         "wcwidth": {
             "hashes": [
