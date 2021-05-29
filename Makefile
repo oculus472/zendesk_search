@@ -37,7 +37,7 @@ lint:
 typecheck:
 	$(RUN) $(PYTHON) mypy --ignore-missing-imports zendesk_search
 
-test: test-unit
+test: test-unit test-e2e
 
 test-%:
 	$(RUN) $(PYTHON) pytest tests/$(*)

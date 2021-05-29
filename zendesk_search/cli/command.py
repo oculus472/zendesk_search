@@ -3,9 +3,15 @@ import pyfiglet
 
 from .. import __version__
 from ..logger import get_logger, set_log_level
+from ..search.collections import build_collections
 from .prompt import prompt_loop
 
 logger = get_logger()
+
+
+def initialize():
+    logger.debug("Initializing..")
+    build_collections()
 
 
 def display_banner():
@@ -17,8 +23,7 @@ def display_banner():
 def _cli(show_prompt: bool, show_banner: bool, verbose: int) -> None:
     if verbose:
         set_log_level(verbose)
-    logger.debug("Initializing application..")
-    # do initialization
+    initialize()
     if show_banner:
         display_banner()
     if show_prompt:

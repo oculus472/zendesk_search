@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any, Iterable
 
 __all__ = ["ZendeskModel", "User", "Ticket", "Organization"]
 
@@ -12,7 +13,7 @@ class ZendeskModel:
     tags: list[str]
 
     @classmethod
-    def get_searchable_fields(cls, sort=True):
+    def get_searchable_fields(cls, sort=True) -> Iterable[str]:
         fields = list(cls.__dataclass_fields__.keys())
         if sort:
             fields.sort()
