@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, Iterable
+from typing import Iterable
 
 __all__ = ["ZendeskModel", "User", "Ticket", "Organization"]
 

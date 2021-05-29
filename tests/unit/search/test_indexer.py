@@ -28,34 +28,46 @@ class TestInvertedIndex:
                 {
                     "name": "bob",
                     "last_name": "smith",
+                    "description": "Plumber by trade, hardworker",
                     "country": "USA",
                     "tags": ["tradesmen", "chess"],
                 },
                 {
                     "name": "anne",
                     "last_name": "jenkins",
+                    "description": "Extremely bright hardworker",
                     "country": "USA",
                     "tags": ["engineer", "chess"],
                 },
             ],
-            ["name", "last_name", "country", "tags"],
+            ["name", "last_name", "country", "tags", "description"],
         )
         actual = self.indexer._index_data
         expected = {
-            "name.bob": [0],
-            "name.anne": [1],
-            "last_name.smith": [0],
-            "last_name.jenkins": [1],
-            "country.usa": [0, 1],
-            "tags.tradesmen": [0],
-            "tags.chess": [0, 1],
-            "tags.engineer": [1],
+            "name": {
+                "bob": [(0, 0)],
+                "anne": [(1, 0)],
+            },
+            "last_name": {
+                "smith": [(0, 0)],
+                "jenkins": [(1, 0)],
+            },
+            "description": {
+                "plumber": [(0, 0)],
+                "by": [(0, 1)],
+                "trade": [(0, 2)],
+                "extremely": [(1, 0)],
+                "bright": [(1, 1)],
+                "hardworker": [(0, 3), (1, 2)],
+            },
+            "country": {
+                "usa": [(0, 0), (1, 0)],
+            },
+            "tags": {
+                "tradesmen": [(0, 0)],
+                "chess": [(0, 1), (1, 1)],
+                "engineer": [(1, 0)],
+            },
         }
-
-        assert expected == actual
-
-    def test_get_key_returns_expected_key_format(self):
-        actual = self.indexer._get_key("heidi", "name")
-        expected = "name.heidi"
 
         assert expected == actual

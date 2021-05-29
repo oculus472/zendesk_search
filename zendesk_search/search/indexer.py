@@ -25,7 +25,7 @@ class Indexer(ABC):
 
 class InvertedIndex(Indexer):
     def __init__(self):
-        self._index_data = defaultdict(list)
+        self._index_data = defaultdict(lambda: defaultdict(list))
 
     def _tokenize_field(self, value: Any) -> Iterable[Any]:
         if isinstance(value, str):
@@ -38,12 +38,8 @@ class InvertedIndex(Indexer):
         # bools, ints, etc.
         return [value]
 
-    def _get_key(self, value, field):
-        return f"{field}.{value}"
-
     def build_index(self, data: Iterable[dict], fields_to_index: Iterable[str]) -> None:
-        document_index = 0
-        for document in data:
+        for document_index, document in enumerate(data):
             for field in fields_to_index:
                 try:
                     value = document[field]
@@ -53,10 +49,8 @@ class InvertedIndex(Indexer):
                     )
                 else:
                     tokens = self._tokenize_field(value)
-                    for token in tokens:
-                        key = self._get_key(token, field)
-                        self._index_data[key].append(document_index)
-            document_index += 1
+                    for pos, token in enumerate(tokens):
+                        self._index_data[field][token].append((document_index, pos))
 
     def find(self, query):
         pass
