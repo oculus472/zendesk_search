@@ -18,24 +18,24 @@ def test_search_zendesk_action_calls_search_zendesk_with_supplied_args(
     mocker: MockerFixture,
 ):
     def fake_prompt(questions):
-        return {"resource": "users", "field": "_id", "search_term": "51"}
+        return {"collection": "users", "field": "_id", "search_term": "51"}
 
     mocker.patch("zendesk_search.cli.prompt.prompt", wraps=fake_prompt)
     mocked_func = mocker.patch("zendesk_search.cli.prompt.search_zendesk")
     search_zendesk_action()
 
     mocked_func.assert_called_once_with(
-        **{"resource": "users", "field": "_id", "search_term": "51"}
+        **{"collection": "users", "field": "_id", "search_term": "51"}
     )
 
 
 def test_list_search_fields_action_calls_list_search_fields(mocker: MockerFixture):
     mocked_func = mocker.patch("zendesk_search.cli.prompt.list_search_fields")
     list_search_fields_action()
-    mocked_func.assert_called_once
+    mocked_func.assert_called_once()
 
 
-def test_quit_action_raises_quitting_exception(mocker: MockerFixture):
+def test_quit_action_raises_quitting_exception():
     with pytest.raises(QuittingException):
         quit_action()
 

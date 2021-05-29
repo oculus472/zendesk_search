@@ -1,11 +1,10 @@
-from enum import Enum
-from typing import Callable, Mapping, NoReturn
+from typing import Callable, Iterable, Mapping, NoReturn
 
 from PyInquirer.prompt import prompt
 
 from ..core import (
-    all_resources,
-    get_field_choices_for_resource,
+    all_collection_names,
+    get_field_choices_for_collection,
     list_search_fields,
     search_zendesk,
 )
@@ -16,8 +15,8 @@ from .exceptions import QuittingException
 logger = get_logger()
 
 
-def _calculate_field_choices(answers: dict) -> list[str]:
-    return get_field_choices_for_resource(answers["resource"])
+def _calculate_field_choices(answers: dict) -> Iterable[str]:
+    return get_field_choices_for_collection(answers["collection"])
 
 
 def search_zendesk_action() -> None:
@@ -25,9 +24,9 @@ def search_zendesk_action() -> None:
         [
             {
                 "type": "list",
-                "name": "resource",
-                "message": "What resource do you want to search?",
-                "choices": all_resources,
+                "name": "collection",
+                "message": "What collection do you want to search?",
+                "choices": all_collection_names,
             },
             {
                 "type": "list",

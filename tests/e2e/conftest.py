@@ -17,7 +17,8 @@ def remove_ansi_escape_sequences(text):
     return text
 
 
-# Taken from: https://github.com/CITGuru/PyInquirer/blob/7637373429bec66788650cda8091b7a6f12929ee/tests/helpers.py
+# Taken from:
+# https://github.com/CITGuru/PyInquirer/blob/7637373429bec66788650cda8091b7a6f12929ee/tests/helpers.py
 # Getting terminal output asserting working properly is tricky.
 class SimplePty(PtyProcess):
     """Simple wrapper around a process running in a pseudoterminal.
@@ -175,15 +176,17 @@ def cd_root(request):
 
 @pytest.fixture
 def cli_app(cd_root):
-    app = SimplePty.spawn(["python", "-m", "zendesk_search", "--show-banner=false"])
+    app = SimplePty.spawn(
+        ["python", "-m", "zendesk_search", "--show-banner=false", "-vvvvv"]
+    )
     yield app
     # Ensure test coverage is gathered.
     time.sleep(app.delayafterterminate)
     try:
         # In case the subprocess wasn't cleaned up by the test.
         app.sendintr()
-    except OSError as e:
-        if e.errno != errno.EIO:
+    except OSError as err:
+        if err.errno != errno.EIO:
             raise
     # Make extra sure the child is getting cleaned up.
     # app.wait() can block if there is unread IO but the app has actually closed.
